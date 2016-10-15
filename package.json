@@ -1,0 +1,22 @@
+{
+  "name": "whoiser",
+  "version": "0.1.0",
+  "description": "Makes a whois lookup on the visitors IP.",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hampusn/whoiser.git"
+  },
+  "author": "Hampus Nordin <nordin.hampus@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/hampusn/whoiser/issues"
+  },
+  "homepage": "https://github.com/hampusn/whoiser#readme",
+  "dependencies": {
+    "node-whois": "^2.1.3"
+  }
+}
