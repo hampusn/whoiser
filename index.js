@@ -1,15 +1,16 @@
 "use strict";
 
-const PORT   = process.env.PORT || 5000;
+const PORT      = process.env.PORT || 5000;
 
-const http   = require('http');
-const whois  = require('node-whois');
+const http      = require('http');
+const whois     = require('node-whois');
+const requestIp = require('request-ip');
 
-const server = http.createServer(handleRequest);
+const server    = http.createServer(handleRequest);
 
 // Request callback
 function handleRequest (request, response) {
-  let addr = request.connection.remoteAddress;
+  let addr = requestIp.getClientIp(request);
 
   whois.lookup(addr, (err, data) => {
     if (err) {

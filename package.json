@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/hampusn/whoiser#readme",
   "dependencies": {
-    "node-whois": "^2.1.3"
+    "node-whois": "^2.1.3",
+    "request-ip": "^1.2.2"
   }
 }
