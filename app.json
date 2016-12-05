@@ -1,0 +1,20 @@
+{
+  "name": "whoiser",
+  "description": "Simple Node.js service which makes a whois lookup on the visitors IP.",
+  "repository": "https://github.com/hampusn/whoiser",
+  "keywords": ["node", "whois"],
+  "env": {
+    "PORT": {
+      "description": "The port your server should listen to.",
+      "value": "5000"
+    },
+    "CACHE_TTL": {
+      "description": "The cache TTL for your whois lookups. This is to make sure you don't spam the whois servers.",
+      "value": "86400"
+    },
+    "NODE_ENV": {
+      "description": "The environment.",
+      "value": "development"
+    }
+  }
+}
