@@ -7,7 +7,8 @@ const NodeCache = require('node-cache');
 const whois     = require('node-whois');
 const requestIp = require('request-ip');
 
-const cache     = new NodeCache({"stdTTL": 3600, "checkperiod": 0});
+const cacheTtl  = process.env.CACHE_TTL || 86400;
+const cache     = new NodeCache({"stdTTL": cacheTtl, "checkperiod": 0});
 const server    = http.createServer(handleRequest);
 
 // Request callback
@@ -16,21 +17,26 @@ function handleRequest (request, response) {
   let data = cache.get(addr);
 
   if (data) {
-    send(request, response, null, data);
+    send(request, response, null, data, addr);
   } else {
     whois.lookup(addr, (err, data) => {
       cache.set(addr, data);
-      send(request, response, err, data);
+      send(request, response, err, data, addr);
     });
   }
 }
 
 // Send response
-function send (request, response, err, data) {
+function send (request, response, err, data, addr) {
   if (err) {
     response.statusCode = 400;
     response.end(err.message);
   } else {
+    let millisLeft = cache.getTtl(addr);
+    if (parseInt(millisLeft) > 0) {
+      response.setHeader('Cache-Control', 'public, max-age=' + cacheTtl);
+      response.setHeader('Expires', new Date(millisLeft).toUTCString());
+    }
     response.end(data);
   }
 }
