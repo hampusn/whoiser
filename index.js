@@ -4,7 +4,7 @@ const PORT      = process.env.PORT || 5000;
 
 const http      = require('http');
 const NodeCache = require('node-cache');
-const whois     = require('node-whois');
+const whois     = require('whois');
 const requestIp = require('request-ip');
 
 const cacheTtl  = process.env.CACHE_TTL || 86400;

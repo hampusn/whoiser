@@ -4,7 +4,8 @@
   "description": "Simple Node.js service which makes a whois lookup on the visitors IP.",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js"
+    "start": "node index.js",
+    "dev": "NODE_ENV=development CACHE_TTL=10 nodemon index.js"
   },
   "repository": {
     "type": "git",
@@ -17,8 +18,15 @@
   },
   "homepage": "https://github.com/hampusn/whoiser#readme",
   "dependencies": {
-    "node-cache": "^4.1.0",
-    "node-whois": "^2.1.3",
-    "request-ip": "^1.2.2"
+    "node-cache": "^5.0.1",
+    "request-ip": "^2.1.3",
+    "whois": "^2.11.0"
+  },
+  "engines": {
+    "node": "12.10.0",
+    "npm": "6.11.3"
+  },
+  "devDependencies": {
+    "nodemon": "^1.19.4"
   }
 }
