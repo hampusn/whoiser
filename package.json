@@ -1,6 +1,6 @@
 {
   "name": "whoiser",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Simple Node.js service which makes a whois lookup on the visitors IP.",
   "main": "index.js",
   "scripts": {
