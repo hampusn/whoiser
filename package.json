@@ -1,5 +1,5 @@
 {
-  "name": "whoiser",
+  "name": "@hampusn/whoiser",
   "version": "0.2.3",
   "description": "Simple Node.js service which makes a whois lookup on the visitors IP.",
   "main": "index.js",
