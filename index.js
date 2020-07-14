@@ -4,7 +4,7 @@ const PORT      = process.env.PORT || 5000;
 
 const http      = require('http');
 const NodeCache = require('node-cache');
-const whois     = require('whois');
+const whoiser   = require('whoiser');
 const requestIp = require('request-ip');
 
 const cacheTtl  = process.env.CACHE_TTL || 86400;
@@ -19,10 +19,15 @@ function handleRequest (request, response) {
   if (data) {
     send(request, response, null, data, addr);
   } else {
-    whois.lookup(addr, (err, data) => {
-      cache.set(addr, data);
-      send(request, response, err, data, addr);
-    });
+    whoiser(addr, { raw: true })
+      .then(({ __raw: raw = '' }) => {
+        cache.set(addr, raw);
+        send(request, response, null, raw, addr);
+      })
+      .catch((err) => {
+        cache.set(addr, err + '');
+        send(request, response, err, err + '', addr);
+      });
   }
 }
 
