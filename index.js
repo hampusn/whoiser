@@ -1,15 +1,12 @@
-"use strict";
+import http from 'http';
+import NodeCache from 'node-cache';
+import whoiser from 'whoiser';
+import requestIp from 'request-ip';
 
-const PORT      = process.env.PORT || 5000;
-
-const http      = require('http');
-const NodeCache = require('node-cache');
-const whoiser   = require('whoiser');
-const requestIp = require('request-ip');
-
-const cacheTtl  = process.env.CACHE_TTL || 86400;
-const cache     = new NodeCache({"stdTTL": cacheTtl, "checkperiod": 0});
-const server    = http.createServer(handleRequest);
+const PORT = process.env.PORT || 5000;
+const cacheTtl = process.env.CACHE_TTL || 86400;
+const cache = new NodeCache({ stdTTL: cacheTtl, checkperiod: 0 });
+const server = http.createServer(handleRequest);
 
 // Request callback
 function handleRequest (request, response) {

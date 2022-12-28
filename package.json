@@ -19,14 +19,15 @@
   "homepage": "https://github.com/hampusn/whoiser#readme",
   "dependencies": {
     "node-cache": "^5.1.2",
-    "request-ip": "^2.1.3",
-    "whoiser": "^1.9.2"
+    "request-ip": "^3.3.0",
+    "whoiser": "^1.13.2"
   },
   "engines": {
-    "node": "12.10.0",
-    "npm": "6.11.3"
+    "node": "18.12.1",
+    "npm": "8.19.2"
   },
   "devDependencies": {
-    "nodemon": "^2.0.6"
-  }
+    "nodemon": "^2.0.20"
+  },
+  "type": "module"
 }
